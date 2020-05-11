@@ -1,17 +1,19 @@
 import React from 'react'
 import logo from "../../logo.svg"
+
+
 class Login extends React.Component{
     render(){
         return(
-            <div>
-                <div>
+            <div className='container'  >
+                <div className='wrapper' >
                     
-                <img src={logo} />
-                <input />
-                <input />
+                    <img src={logo }    />
+                    <input />
+                    <input />
 
-                <button>test</button>
-                </div>
+                    <button>test</button>
+                    </div>
 
             </div>
         )
