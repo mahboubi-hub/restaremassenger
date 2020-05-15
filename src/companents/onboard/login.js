@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from "../../logo.svg"
+import logo from '../../logo.svg'
 
 
 class Login extends React.Component{
@@ -9,10 +9,18 @@ class Login extends React.Component{
                 <div className='wrapper' >
                     
                     <img src={logo }    />
-                    <input />
-                    <input />
+                    <p><b>User Login</b></p>
 
-                    <button>test</button>
+                    <input
+                     placeholder='Email' 
+                     type='email' />
+                    
+                    <input
+                     placeholder='Password' 
+                     type='password' />
+
+                    
+                    <button ><b>login</b></button>
                     </div>
 
             </div>
