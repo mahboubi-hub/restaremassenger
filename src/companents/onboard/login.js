@@ -1,6 +1,7 @@
 import React from 'react'
 import logo from '../../logo.svg'
 import validate from '../../validation/validateFunction.js'
+import {Link} from 'react-router-dom'
 
 
 class Login extends React.Component{
@@ -41,7 +42,7 @@ handleChangeEmail (e) {
                 <h2>{this.props.title}        </h2>
 
                     
-                    <img src={logo }    />
+                    <img alt='logo' src={logo }    />
                     <p><b>User Login</b></p>
 
                     <input
@@ -74,10 +75,15 @@ handleChangeEmail (e) {
                      }
                      
 
+                     <Link to='/messenger'>
+                         <button 
+                            onClick={()=>this.validationFealds()}
+                        ><b>login</b></button>
+                    </Link>
                     
-                    <button 
-                        onClick={()=>this.validationFealds()}
-                    ><b>login</b></button>
+                    
+                    <Link to='/signup'>signup</Link>
+                    
                     </div>
 
             </div>
