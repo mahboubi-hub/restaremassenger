@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import logo from '../../logo.svg'
-// import validate from '../../validation/validateFunction.js'
+import validate from '../../validation/validateFunction.js'
 import { Link } from 'react-router-dom'
 
 
@@ -12,6 +12,11 @@ const[fields,setFields] = useState({
     password:'',
     confrimpassword:''
 } )
+
+const handleCange =(e) =>{
+    
+    setFields({...fields, [e.target.name]:e.target.value})
+}
 const[errors,setErrors] = useState({
     email:null,
     password:null,
@@ -19,6 +24,18 @@ const[errors,setErrors] = useState({
 
 } )
 
+const handleError =()=>{
+    const confrimPasswordErrors = fields.password ===fields.confrimPassword 
+        ? null
+        : 'password & confrim password do not match '
+    const errors ={
+        email: validate('email',fields.email),
+        password: validate('password',fields.password),
+        confrimPassword: confrimPasswordErrors
+         
+    }
+    setErrors(errors)
+}
    
         return(
             
@@ -32,7 +49,11 @@ const[errors,setErrors] = useState({
                      placeholder='Email' 
                      type='email' 
                      name='email'
+                     onChange={handleCange}
                      />
+                      {errors.email !== null &&
+                        <span >{errors.email}</span>
+                     }
                      
                      
                     
@@ -40,6 +61,8 @@ const[errors,setErrors] = useState({
                      placeholder='Password'
                      name='password' 
                      type='password' 
+                     onChange={handleCange}
+
                       />
                      
 
@@ -47,12 +70,15 @@ const[errors,setErrors] = useState({
                      placeholder='confirm Password' 
                      name='confrimPassword'
                      type='password'
+                     onChange={handleCange}
+
                       />
+                     
                      
 
                     
                     <button
-                        onClick={()=>setCount(count+1)}
+                        onClick={handleError}
                         ><b>Sign Up{count}</b></button>
                     <Link to='/'>already have an account? Login</Link>
                     </div>
